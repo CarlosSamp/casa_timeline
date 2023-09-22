@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Gallery</sheetTitle>
+
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.galleryTitle>
+                        <TCEforms>
+                            <label>Titel</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.galleryTitle>
+                    <settings.startTop>
+                        <TCEforms>
+                            <label>Anzeigen max.</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.startTop>
+                    <settings.tag>
+                        <TCEforms>
+                            <label>Tag</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.tag>
+                    <settings.startFrom>
+                        <TCEforms>
+                            <label>anzeigen von</label>
+                            <config>
+                                <type>input</type>
+                                <renderType>inputDateTime</renderType>
+                                <eval>date</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.startFrom>
+                    <settings.startTill>
+                        <TCEforms>
+                            <label>bis</label>
+                            <config>
+                                <type>input</type>
+                                <renderType>inputDateTime</renderType>
+                                <eval>date</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.startTill>
+
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

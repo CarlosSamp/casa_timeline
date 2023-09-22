@@ -1,0 +1,111 @@
+
+plugin.tx_casatimeline_gallery {
+    view {
+        templateRootPaths.0 = EXT:{extension.shortExtensionKey}/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_casatimeline_gallery.view.templateRootPath}
+        partialRootPaths.0 = EXT:casa_timeline/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_casatimeline_gallery.view.partialRootPath}
+        layoutRootPaths.0 = EXT:tx_casatimeline/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_casatimeline_gallery.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_casatimeline_gallery.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+
+}
+
+ajax_api = PAGE
+ajax_api {
+  typeNum = 8888
+  config {
+    debug = 0
+    disableAllHeaderCode = 1
+    xhtml_cleaning = 0
+    admPanel = 0
+    #additionalHeaders = Content-type: application/html #text/plain #application/json
+    additionalHeaders {
+      10 {
+        header = Content-Type: text/plain
+        replace = 1
+      }
+    }
+    no_cache = 1
+    debug = 1
+    contentObjectExceptionHandler = 0
+  }
+
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        vendorName = Casa
+        extensionName = CasaTimeline
+        pluginName = Meinajax
+        action = gallery
+        switchableControllerActions.Meinajax.1 = gallery
+    }
+  #10 < plugin.casatimeline_meinajax #tt_content.list.20.casatimeline_meinajax
+}
+plugin.tx_casatimeline_meinajax {
+  persistence {
+    storagePid = {$plugin.tx_casatimeline_gallery.persistence.storagePid}
+  }
+}
+
+page{
+  includeCSS {
+     timeline = EXT:casa_timeline/Resources/Public/Scss/timeline.scss
+     timeline {
+         disableCompression = 1
+         excludeFromConcatenation = 1
+
+     }
+  }
+  includeJSFooter {
+     timeline = EXT:casa_timeline/Resources/Public/Js/timeline.js
+     timeline {
+         disableCompression = 1
+         excludeFromConcatenation = 1
+
+     }
+  }
+  config.pageTitleProviders.tx_casatimeline_gallery {
+        provider = Casa\CasaTimeline\PageTitle\EventTitleProvider
+        before = altPageTitle,record,seo
+  }
+
+  config{
+    pageTitleFirst = 1
+    pageTitleSeparator = |
+    pageTitleSeparator.noTrimWrap = | | |
+  }
+  config.contentObjectExceptionHandler = 0
+
+
+}
+  
+
+# Module configuration
+module.tx_casatimeline_web_casatimelinetimeline {
+    persistence {
+        storagePid = {$module.tx_casatimeline_timeline.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_casatimeline_timeline.view.templateRootPath}
+        partialRootPaths.0 = EXT:casa_timeline/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_casatimeline_timeline.view.partialRootPath}
+        layoutRootPaths.0 = EXT:casa_timeline/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_casatimeline_timeline.view.layoutRootPath}
+    }
+}

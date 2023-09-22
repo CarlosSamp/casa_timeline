@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-03-11T11:53:35Z" product-name="casa_timeline">
+		<header/>
+		<body>
+			<trans-unit id="tx_casatimeline_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_event.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_event.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_event.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_event.tags">
+				<source>Tags</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_event.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_tag">
+				<source>Tag</source>
+			</trans-unit>
+			<trans-unit id="tx_casatimeline_domain_model_tag.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_casa_timeline_gallery.name">
+				<source>Gallery</source>
+			</trans-unit>
+			<trans-unit id="tx_casa_timeline_gallery.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,42 @@
+
+<f:for each="{events}" as="event">
+
+         <div class="boxes">
+            <div class="event-img">
+
+
+             <div class="left-box">
+                 <a class="showGallery" name="{event.uid}">
+
+                     <f:if condition="{event.image}">
+                     <f:media class="gallery-item grow" file="{event.image}" alt="{event.titel}"/>
+
+                     </f:if>
+                 </a>
+
+                   <f:form.hidden name="uri_hidden" id="uri_hidden{event.uid}" value="{f:uri.action(action: 'gallery', controller: 'Ajax', pluginName: 'MeinaJax', pageType:'8888')}" />
+                 <f:if condition="{event.images.count} > 0">
+                 <p>{event.images.count}</p>
+                 </f:if>
+             </div>
+             <div class="right-box">
+
+                 <h2 class="foto-title"> <a class="showGallery" name="{event.uid}">{event.eventstartdate -> f:format.date(format: 'd.m.Y')} - {event.titel} </a></h2>
+                 <br>
+                   <span>( {event.images -> f:count()} Bilder) | </span>
+                   <f:if condition="{event.tags -> f:count()} > 0">
+                   <f:then>
+                   <span> Tags:
+                   <f:for each="{event.tags}" as="tag" iteration="i">
+                     #{tag.name}
+                   </f:for>
+                   </span>
+                   </f:then>
+                   <f:else> No Tags</f:else>
+                   </f:if>
+                   <span><f:link.action action="show" arguments="{event : event}"> details</f:link.action> </span>
+             </div>
+         </div>
+
+      </div>
+ </f:for>

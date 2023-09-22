@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-casa-timeline" >
+	<tr>
+		<td>
+			<f:translate key="tx_casatimeline_domain_model_event.date" />
+		</td>
+		<td>
+		{event.date -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_casatimeline_domain_model_event.description" />
+		</td>
+		<td>
+		{event.description}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_casatimeline_domain_model_event.image" />
+		</td>
+		<td>
+				<f:image src="{event.image.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_casatimeline_domain_model_event.images" />
+		</td>
+		<td>
+		{event.images}
+		</td>
+	</tr>
+</table>
+</html>

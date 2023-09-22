@@ -1,0 +1,26 @@
+{
+    "name": "casa/casa-timeline",
+    "type": "typo3-cms-extension",
+    "description": "Timeline with events. Each event has its own gallery.",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Casa\\CasaTimeline\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Casa\\CasaTimeline\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "casa/casa-timeline": "self.version",
+        "typo3-ter/casa-timeline": "self.version"
+    },
+    "sitecrawler":{
+      "crawl": "https://webcasa.tech/sitemap.xml"
+    }
+}

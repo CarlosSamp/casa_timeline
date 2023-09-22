@@ -1,0 +1,74 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+
+	<f:section name="content">
+
+		<h1>{event.eventstartdate -> f:format.date(format: 'd.m.Y')} - {event.titel}</h1>
+		<f:if condition="{f:count(subject:{event.tags})} > 0">
+		<f:then>
+		<span>
+
+		<f:for each="{event.tags}" as="tag" iteration="i">
+			#{tag.name}
+		</f:for>
+
+		</span>
+		</f:then>
+		<f:else> No Tags</f:else>
+		</f:if>
+		<f:flashMessages />
+		<f:comment>
+			<f:render partial="Event/Properties" arguments="{event:event}" />
+			<f:link.action action="list">Back to list</f:link.action><br />
+			<f:link.action action="new">New Event</f:link.action>
+		</f:comment>
+
+	<!-- Same as Modal -->
+	<div class="modal-dialog-custom">
+		<div class="timeline-description">
+					<f:format.html> {event.description}</f:format.html>
+		</div>
+
+	  <div class="modal-content" style="width: 100%;">
+	    <!-- Modal body -->
+	    <!-- <div class="modal-body"> -->
+	      <!-- <div class="slideshow-container"> -->
+	         <f:if condition="{event.images -> f:count()} > 0">
+	         <f:then>
+	            <f:for each="{event.images}" as="img" iteration="i">
+
+	            <div class="mySlides fade-in">
+	              <div class="numbertext">{i.cycle} / {event.images -> f:count()}</div>
+	              <f:media file="{img}" /> <f:comment><f:image image="{img}" /></f:comment>
+	              </div>
+	            </f:for>
+
+	             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	             <a class="next" onclick="plusSlides(1)">&#10095;</a>
+	             <div class="dots-con">
+	                <f:for each="{event.images}" as="image" iteration="i">
+
+	                   <span class="dot" onclick="currentSlide({i.cycle})"> </span>
+
+
+	                </f:for>
+	             </div>
+	         </f:then>
+	         <f:else>
+	            <div class="mySlides fade-in">
+	           <div class="numbertext">1 / 1</div>
+	           <div class="gallery-img">
+	              <f:image image="{event.image}" />
+	           </div>
+	           </div>
+	         </f:else>
+	         </f:if>
+	      <!-- </div> -->
+	    <!-- </div> -->
+	  </div>
+
+	</div>
+<!-- ENDE -->
+
+	</f:section>
+</html>

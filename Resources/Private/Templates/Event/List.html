@@ -1,0 +1,62 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+	<f:section name="content">
+
+		<f:flashMessages />
+		<f:comment>
+		<f:link.action action="sendmail">action link</f:link.action></f:comment>
+<f:if condition="{title} == ''"><f:then>
+		<!-- Filter options -->
+		<div class="options-container">
+			{title}
+				 <div class="options">
+					 <label for="year">Jahr</label><br>
+					  <f:form.select class="filter-option form-control year" title="year" name="year" options="{years}"  />
+						<br> <label for="search">Suchbegriff</label><br>
+						<f:form.textfield class="filter-option form-control search" title="search" name="search" />
+
+				 </div>
+
+				 <div class="checkboxes" name="checkboxes">
+					 <label for="checkboxes">Tags:</label>
+						<div class="check-option">
+							<f:form.checkbox class="filter-option" title="climb" name="tag" value="klettern"/>
+							<!-- <input type="checkbox" name="tag" value="klettern" checked="" /> -->
+							<label for="klettern">klettern</label>
+						</div>
+
+					<div class="check-option">
+						 <f:form.checkbox class="filter-option" title="skitour" name="tag" value="skitour"/>
+						 <label for="skitour">skitour</label>
+					</div>
+					<div class="check-option">
+						 <f:form.checkbox class="filter-option" title="travel" name="tag" value="reisen"/>
+						 <label for="reisen">reisen</label>
+					</div>
+					<div class="check-option">
+						 <f:form.checkbox class="filter-option" title="hiking" name="tag" value="wandern"/>
+						 <label for="wandern">wandern</label>
+					</div>
+				 </div>
+<button id="filterButton" class="btn btn-primary" type="button" name="filter">Filter</button>
+
+		</div>
+	</f:then>
+	<f:else> <h1>{title}</h1> <p>{info}</p> </f:else>
+</f:if>
+			<f:form.hidden name="filter_hidden" id="filter_hidden" value="{f:uri.action(action: 'timeline', controller: 'Ajax', pluginName: 'Meinajax', pageType:'8888')}" />
+
+			<br>
+
+		<!-- All Events, Timeline -->
+		<div id="timeline" class="tx_timeline">
+			<f:render partial="Timeline" arguments="{_all}"/>
+		</div>
+
+		<!-- All pictures to Event, Modalwindow -->
+		<div class="modal-custom" id="modal">
+
+		</div>
+
+	</f:section>
+</html>
